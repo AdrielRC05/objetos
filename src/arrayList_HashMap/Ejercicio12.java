@@ -1,13 +1,12 @@
 package arrayList_HashMap;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Ejercicio12 {
     public static void main(String[] args) {
         Scanner teclado= new Scanner(System.in);
+        String traduccion;
+        int contadorAciertos=0;
         Random aleatorio= new Random();
         HashMap<String, String>diccionario= new HashMap<>();
         diccionario.put("Auto","Coche");
@@ -22,16 +21,21 @@ public class Ejercicio12 {
             System.out.println(diccionario.get(palabra));
         }*/
 
-        String claveAleatoria;
         ArrayList<String> arrayClaves = new ArrayList<>(diccionario.keySet());
-        ArrayList<String> palabras= new ArrayList<>();
-        do {
-            claveAleatoria= arrayClaves.get(aleatorio.nextInt(1,6));
-            palabras.add(claveAleatoria);
-        } while (!palabras.contains(claveAleatoria) && palabras.size()<6);
-        for (String p:palabras){
-            System.out.println(p);
+        Collections.shuffle(arrayClaves);
+        System.out.println("Escribe su traduccion correctamente");
+
+        for (String c:arrayClaves){
+            System.out.println(c);
+            traduccion=teclado.nextLine();
+            if (traduccion.equals(diccionario.get(c))){
+                contadorAciertos++;
+                System.out.println("Acierto");
+            } else {
+                System.out.println("Fallo");
+            }
         }
-        String valor=diccionario.get(claveAleatoria);
+        System.out.println("Aciertos: "+contadorAciertos);
+        System.out.println("Fallos: "+(5-contadorAciertos));
     }
 }

@@ -1,21 +1,18 @@
 package arrayList_HashMap;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.Random;
 
-public class Carta {
+public class Carta implements Comparable<Carta> {
     private Valor valor;
     private Palo palo;
 
     public Carta() {
         Random aleatorio= new Random();
-        ArrayList<Valor> valores= new ArrayList<>();
-        ArrayList<Palo> palos= new ArrayList<>();
-        Collections.addAll(valores, Valor.values());
-        Collections.addAll(palos, Palo.values());
-        this.valor=valores.get(aleatorio.nextInt(0, valores.size()));
-        this.palo =palos.get(aleatorio.nextInt(0, palos.size()));
+        this.valor=Valor.values()[aleatorio.nextInt(0, Valor.values().length)];
+        this.palo =Palo.values()[aleatorio.nextInt(0, Palo.values().length)];
     }
 
     public Valor getValor() {
@@ -35,10 +32,33 @@ public class Carta {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Carta carta = (Carta) o;
+        return valor == carta.valor && palo == carta.palo;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(valor, palo);
+    }
+
+    @Override
     public String toString() {
         return "Carta{" +
                 "valor=" + valor +
                 ", palo=" + palo +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(Carta o) {
+        if (this.palo==o.getPalo()){
+            return this.valor.compareTo(o.getValor());
+        } else {
+            return this.palo.compareTo(o.getPalo());
+        }
     }
 }

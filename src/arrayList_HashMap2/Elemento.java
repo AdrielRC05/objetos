@@ -5,11 +5,13 @@ public class Elemento {
     private String nombre;
     private double precio;
     private int cantidad;
+    private double subtotal;
 
     public Elemento(String nombre, double precio, int cantidad) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.subtotal=precio*cantidad;
     }
 
     public String getNombre() {
@@ -40,7 +42,7 @@ public class Elemento {
     public String toString() {
         return nombre +
                 " PVP: " + precio +
-                " Unidades:" + cantidad
-                +'\n';
+                " Unidades:" + cantidad +
+                " Subtotal:" + subtotal +"\n";
     }
 }

@@ -39,5 +39,6 @@ public class Ejercicio9 {
             i++;
         }
         System.out.println("Puntos totales: "+contador+" peones.");
+        System.out.println("Hola");
     }
 }

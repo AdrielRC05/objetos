@@ -2,7 +2,6 @@ package arrayList_HashMap2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class Ejercicio9 {

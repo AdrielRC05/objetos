@@ -1,4 +1,4 @@
-package treeSet;
+package TreeSet;
 
 import java.util.Random;
 import java.util.TreeSet;

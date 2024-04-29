@@ -11,10 +11,10 @@ public class Calculadora {
     }
 
     static double rest(double... operands) {
-        return DoubleStream.of(operands).reduce(1, (a, b) -> a - b);
+        return DoubleStream.of(operands).reduce((a, b) -> a - b).orElse(0.0);
     }
 
     static double divide(double... operands) {
-        return DoubleStream.of(operands).reduce(1, (a, b) -> a / b);
+        return DoubleStream.of(operands).reduce((a, b) -> a / b).orElse(0.0);
     }
 }
